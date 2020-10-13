@@ -5,6 +5,7 @@ import com.prat.polly.service.PollService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,14 +31,14 @@ public class PollController {
         return pollService.getAll();
     }
 
-    @PutMapping(value = "/vote")
-    public String vote() {
-        return "Vote for a poll";
+    @PutMapping(value = "/vote/{id}/{choice}")
+    public Polly01 vote(@PathVariable String id, @PathVariable int choice) {
+        return pollService.vote(id,choice);
     }
 
     @PostMapping(value = "/new")
     public void create(){
-
+        //TODO
     }
 
 }

@@ -21,5 +21,8 @@ public interface PollService {
      *
      * @return Poll
      */
-    Polly01 vote();
+    Polly01 vote(String pollId, int choiceId);
+
+
+    Polly01 createPoll();
 }

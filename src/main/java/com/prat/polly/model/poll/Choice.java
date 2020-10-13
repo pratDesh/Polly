@@ -1,7 +1,10 @@
 package com.prat.polly.model.poll;
 
+import javax.persistence.Id;
+
 public class Choice {
 
+    @Id
     int id;
     String label;
     int votes;
