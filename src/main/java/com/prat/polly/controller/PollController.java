@@ -3,7 +3,10 @@ package com.prat.polly.controller;
 import com.prat.polly.model.poll.Polly01;
 import com.prat.polly.service.PollService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,9 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/poll")
 public class PollController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PollController.class);
 
     @Autowired
     PollService pollService;
@@ -28,6 +34,7 @@ public class PollController {
 
     @GetMapping
     public List<Polly01> getPolls() {
+        LOGGER.info("Getting all polls");
         return pollService.getAll();
     }
 

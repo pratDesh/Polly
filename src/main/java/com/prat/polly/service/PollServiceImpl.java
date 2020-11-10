@@ -5,6 +5,8 @@ import com.prat.polly.model.poll.Polly01;
 import com.prat.polly.repository.PollRepository;
 
 import org.apache.tomcat.jni.Poll;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +17,14 @@ import java.util.stream.Collectors;
 @Service
 public class PollServiceImpl implements PollService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(PollServiceImpl.class);
+
     @Autowired
     PollRepository pollRepository;
 
     @Override
     public List<Polly01> getAll() {
+        LOGGER.info("Getting all Polls from serviceImpl");
         return pollRepository.findAll();
     }
 
