@@ -36,6 +36,7 @@ public class PollController {
 
     @GetMapping
     public List<Polly01> getPolls() {
+        //TODO : Fetch a limited Polls at a time.
         LOGGER.info("Getting all polls");
         return pollService.getAll();
     }

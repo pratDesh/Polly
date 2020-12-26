@@ -11,9 +11,11 @@ import javax.persistence.Id;
 @Document(collection = "polly01")
 public class Polly01 {
 
+    //TODO: Generate custom Ids
     @Id
     private String id;
     //TODO : add User info for each poll.
+    // Add createdTime.
    // private UserLite user;
     private String question;
     private List<Choice> choices;

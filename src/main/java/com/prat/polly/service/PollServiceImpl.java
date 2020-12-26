@@ -35,6 +35,7 @@ public class PollServiceImpl implements PollService {
 
     @Override
     public Polly01 vote(String pollId, int choiceId) {
+        LOGGER.info("Voting for ChoiceId {} for PollId {}", choiceId, pollId);
         Polly01 polly = pollRepository.findById(pollId).orElse(null);
         polly.getChoices().stream().filter(c -> c.getId() == choiceId).forEach(c -> c.setVotes(c.getVotes() + 1));
         polly.setTotalVotes(polly.getTotalVotes() + 1);
@@ -44,6 +45,8 @@ public class PollServiceImpl implements PollService {
     // TODO
     @Override
     public Polly01 createPoll(PollDTO dto) {
+        // TODO: generate choice Id here.
+        LOGGER.info("Creating new Poll: {}", dto);
         return pollRepository.save(transformer.toEntity(dto));
     }
 }

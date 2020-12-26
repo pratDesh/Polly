@@ -2,11 +2,11 @@ package com.prat.polly.model.user;
 
 public class UserLite {
 
-    Long id;
-    String firstName;
-    String lastName;
-    String username;
-    String summary;
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String username;
+    private String summary;
 
     public UserLite() {
     }
