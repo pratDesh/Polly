@@ -1,8 +1,10 @@
 package com.prat.polly.service;
 
+import com.prat.polly.dto.PollDTO;
 import com.prat.polly.model.poll.Choice;
 import com.prat.polly.model.poll.Polly01;
 import com.prat.polly.repository.PollRepository;
+import com.prat.polly.util.PollTransformer;
 
 import org.apache.tomcat.jni.Poll;
 import org.slf4j.Logger;
@@ -22,6 +24,9 @@ public class PollServiceImpl implements PollService {
     @Autowired
     PollRepository pollRepository;
 
+    @Autowired
+    PollTransformer transformer;
+
     @Override
     public List<Polly01> getAll() {
         LOGGER.info("Getting all Polls from serviceImpl");
@@ -38,7 +43,7 @@ public class PollServiceImpl implements PollService {
 
     // TODO
     @Override
-    public Polly01 createPoll() {
-        return null;
+    public Polly01 createPoll(PollDTO dto) {
+        return pollRepository.save(transformer.toEntity(dto));
     }
 }

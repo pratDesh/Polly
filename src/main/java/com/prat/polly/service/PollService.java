@@ -1,5 +1,6 @@
 package com.prat.polly.service;
 
+import com.prat.polly.dto.PollDTO;
 import com.prat.polly.model.poll.Polly01;
 
 import java.util.List;
@@ -23,6 +24,5 @@ public interface PollService {
      */
     Polly01 vote(String pollId, int choiceId);
 
-
-    Polly01 createPoll();
+    Polly01 createPoll(PollDTO dto);
 }

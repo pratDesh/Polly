@@ -1,5 +1,6 @@
 package com.prat.polly.controller;
 
+import com.prat.polly.dto.PollDTO;
 import com.prat.polly.model.poll.Polly01;
 import com.prat.polly.service.PollService;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,8 +46,8 @@ public class PollController {
     }
 
     @PostMapping(value = "/new")
-    public void create(){
-        //TODO
+    public Polly01 create(@RequestBody PollDTO dto) {
+        return pollService.createPoll(dto);
     }
 
 }
