@@ -5,14 +5,14 @@ import javax.persistence.Id;
 public class Choice {
 
     @Id
-    int id;
-    String label;
-    int votes;
+    private int id;
+    private String label;
+    private Long votes;
 
     public Choice() {
     }
 
-    public Choice(int id, String label, int votes) {
+    public Choice(int id, String label, Long votes) {
         this.id = id;
         this.label = label;
         this.votes = votes;
@@ -34,11 +34,11 @@ public class Choice {
         this.label = label;
     }
 
-    public int getVotes() {
+    public Long getVotes() {
         return votes;
     }
 
-    public void setVotes(int votes) {
+    public void setVotes(Long votes) {
         this.votes = votes;
     }
 }
