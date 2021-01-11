@@ -2,6 +2,8 @@ package com.prat.polly.model.user;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
@@ -19,6 +21,8 @@ public class User {
     private String email;
 
     private String password;
+
+    private Instant createdDate;
 
     @Enumerated(EnumType.STRING)
     private AuthProvider provider;
