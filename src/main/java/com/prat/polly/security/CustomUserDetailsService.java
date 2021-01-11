@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         //                () -> new ResourceNotFoundException("User", "id", id)
         //        );
         //
-        //        return UserPrincipal.create(user);
+        //        return UserPrincipal.signUp(user);
 
         return null;
     }

@@ -1,31 +1,24 @@
 package com.prat.polly.model.poll;
 
+import java.util.List;
+
 public class Reacts {
+    private Long likes;
+    private List<String> likedBy;
 
-    int upVotes;
-    int downVotes;
-
-    public Reacts() {
+    public Long getLikes() {
+        return likes;
     }
 
-    public Reacts(int upVotes, int downVotes) {
-        this.upVotes = upVotes;
-        this.downVotes = downVotes;
+    public void setLikes(Long likes) {
+        this.likes = likes;
     }
 
-    public int getUpVotes() {
-        return upVotes;
+    public List<String> getLikedBy() {
+        return likedBy;
     }
 
-    public void setUpVotes(int upVotes) {
-        this.upVotes = upVotes;
-    }
-
-    public int getDownVotes() {
-        return downVotes;
-    }
-
-    public void setDownVotes(int downVotes) {
-        this.downVotes = downVotes;
+    public void setLikedBy(List<String> likedBy) {
+        this.likedBy = likedBy;
     }
 }

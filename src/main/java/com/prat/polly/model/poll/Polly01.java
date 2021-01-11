@@ -1,6 +1,6 @@
 package com.prat.polly.model.poll;
 
-import com.prat.polly.model.user.UserLite;
+import com.prat.polly.model.user.UserSummary;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,9 +14,9 @@ public class Polly01 {
     //TODO: Generate custom Ids
     @Id
     private String id;
-    //TODO : add User info for each poll.
-    // Add createdTime.
-   // private UserLite user;
+    //TODO : Add createdTime.
+
+    private UserSummary createdBy;
     private String question;
     private List<Choice> choices;
     private int totalVotes;
@@ -25,8 +25,9 @@ public class Polly01 {
     public Polly01() {
     }
 
-    public Polly01(String id, String question, List<Choice> choices, int totalVotes) {
+    public Polly01(String id, UserSummary createdBy, String question, List<Choice> choices, int totalVotes) {
         this.id = id;
+        this.createdBy = createdBy;
         this.question = question;
         this.choices = choices;
         this.totalVotes = totalVotes;
@@ -62,5 +63,13 @@ public class Polly01 {
 
     public void setTotalVotes(int totalVotes) {
         this.totalVotes = totalVotes;
+    }
+
+    public UserSummary getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(UserSummary createdBy) {
+        this.createdBy = createdBy;
     }
 }

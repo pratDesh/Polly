@@ -1,10 +1,12 @@
 package com.prat.polly.model.user;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
-
+@Document(collection = "user")
 public class User {
 
     @Id
