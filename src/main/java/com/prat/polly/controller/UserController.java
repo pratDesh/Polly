@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -61,6 +62,12 @@ public class UserController {
     public List<Polly01> getPollsVotedBy(@PathVariable(value = "username") String username) {
 
         return null;
+    }
+
+    @GetMapping("/all")
+    public List<User> getAllUsers() {
+
+        return Arrays.asList(userRepository.findByUsernameOrEmail("prat19", "prat19"));
     }
 
 }

@@ -19,13 +19,16 @@ import java.util.Map;
 public class UserPrincipal implements OAuth2User, UserDetails {
 
     private String id;
+    private String name;
+    private String username;
     private String email;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
 
-    public UserPrincipal(String id, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(String id, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
@@ -37,6 +40,7 @@ public class UserPrincipal implements OAuth2User, UserDetails {
 
         return new UserPrincipal(
                 user.getId(),
+                user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
                 authorities
@@ -79,32 +83,32 @@ public class UserPrincipal implements OAuth2User, UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     @Override
@@ -114,11 +118,11 @@ public class UserPrincipal implements OAuth2User, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorities;
     }
 
     @Override
     public String getName() {
-        return null;
+        return email;
     }
 }
