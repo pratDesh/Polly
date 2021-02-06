@@ -3,8 +3,10 @@ package com.prat.polly.util;
 import com.prat.polly.dto.PollDTO;
 import com.prat.polly.model.poll.Choice;
 import com.prat.polly.model.poll.Polly01;
+import com.prat.polly.model.user.UserSummary;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

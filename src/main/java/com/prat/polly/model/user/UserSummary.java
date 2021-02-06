@@ -2,24 +2,24 @@ package com.prat.polly.model.user;
 
 public class UserSummary {
 
-    private Long id;
+    private String id;
     private String name;
     private String username;
 
     public UserSummary() {
     }
 
-    public UserSummary(Long id, String name, String username) {
+    public UserSummary(String id, String name, String username) {
         this.id = id;
         this.name = name;
         this.username = username;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

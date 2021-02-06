@@ -3,13 +3,17 @@ package com.prat.polly.service;
 import com.prat.polly.dto.PollDTO;
 import com.prat.polly.model.poll.Choice;
 import com.prat.polly.model.poll.Polly01;
+import com.prat.polly.model.user.User;
+import com.prat.polly.model.user.UserSummary;
 import com.prat.polly.repository.PollRepository;
+import com.prat.polly.security.UserPrincipal;
 import com.prat.polly.util.PollTransformer;
 
 import org.apache.tomcat.jni.Poll;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -34,7 +38,7 @@ public class PollServiceImpl implements PollService {
     }
 
     @Override
-    public Polly01 vote(String pollId, int choiceId) {
+    public Polly01 vote(String pollId, int choiceId, UserPrincipal currentUser) {
         LOGGER.info("Voting for ChoiceId {} for PollId {}", choiceId, pollId);
         Polly01 polly = pollRepository.findById(pollId).orElse(null);
         polly.getChoices().stream().filter(c -> c.getId() == choiceId).forEach(c -> c.setVotes(c.getVotes() + 1));
@@ -44,9 +48,20 @@ public class PollServiceImpl implements PollService {
 
     // TODO
     @Override
-    public Polly01 createPoll(PollDTO dto) {
-        // TODO: generate choice Id here.
+    public Polly01 createPoll(PollDTO dto, UserPrincipal currentUser) {
         LOGGER.info("Creating new Poll: {}", dto);
-        return pollRepository.save(transformer.toEntity(dto));
+        Polly01 poll = transformer.toEntity(dto);
+        poll.setCreatedBy(getUser());
+        return pollRepository.save(poll);
     }
+
+    private UserSummary getUser() {
+        UserPrincipal currentUser = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return new UserSummary(
+                currentUser.getId(),
+                currentUser.getName(),
+                currentUser.getUsername()
+        );
+    }
+
 }
